@@ -1,0 +1,28 @@
+site_name: Cobot Documentation
+site_author: Robert Harbach / Thao Dang
+repo_url: https://github.com/td-code/asd-turtlebot4-base
+copyright: Authors <a href="https://github.com/robgineer"> Robert Harbach </a> / <a href="https://github.com/td-code"> Thao Dang </a>
+theme:
+  name: readthedocs
+
+
+nav:
+  - Overview: index.md
+  - Quickstart: quickstart.md
+  - Graphical User Interfaces:
+    - gui_overview.md
+    - howToVNC.md
+    - howToXpra.md
+
+
+plugins:
+  - search
+  - mkdocs-jupyter:
+      execute: false   # don't re-run notebooks on build
+
+markdown_extensions:
+  - toc:
+      permalink: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
