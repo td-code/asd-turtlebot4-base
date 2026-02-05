@@ -4,11 +4,14 @@
 # devcontainer persistent bash history
 docker/bash/.bash_history
 
+# persistent data for the devcontainer
+data/*
+!data/.gitkeep 
+
 ### ROS2 ###
 install/
 log/
 build/
-data/
 
 # Ignore generated docs
 *.dox

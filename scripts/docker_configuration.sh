@@ -8,13 +8,13 @@ echo " ▝▚▄▄▖▝▚▄▞▘▐▌  ▐▌  █ ▐▌ ▐▌▗▄█�
 # Check for additional args (currently only "gpu" is supported)
 ARGS="${1:-}"
 # set the name for the image and the container
-IMAGE_NAME="cobot_noble_image"
-CONTAINER_NAME="cobot_container"
+IMAGE_NAME="asd_noble_image"
+CONTAINER_NAME="asd_container"
 
 # This should be run from script directory
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 if [ "$PWD" != "$SCRIPT_DIR" ]; then 
-    echo -e "\nPlease run $(basename "$0") from 'cobot/scripts' directory!"
+    echo -e "\nPlease run $(basename "$0") from 'asd-turtlebot4-base/scripts' directory!"
     exit
 fi
 

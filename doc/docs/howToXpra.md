@@ -21,7 +21,7 @@ Dont forget to install xpra on your local client machine as well.
 
 After successfully having cloned this repo, run the `docker_configuration` script.
 ```bash
-cd ~/cobot/scripts
+cd ~/asd-turtlebot4-base/scripts
 ./docker_configuration.sh
 ```
 

@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'asd-turtlebot4-getting-started'
+package_name = 'asd_getting_started'
 
 setup(
     name=package_name,
@@ -17,10 +17,10 @@ setup(
     maintainer_email='thao.dang@hs-esslingen.de',
     description='Getting started with the TurtleBot4 in the Signal Processing and Robotics Lab.',
     license='BSD-3-Clause',
-    tests_require=['pytest'],
+    #tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'demo = getting_started.demo:main',
+            'demo = asd_getting_started.demo:main',
         ],
     },
 )

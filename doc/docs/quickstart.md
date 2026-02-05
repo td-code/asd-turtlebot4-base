@@ -1,14 +1,14 @@
 # Quickstart Guide
 
-Follow the instructions below to plan and execute trajectories in simulation or on the real Cobot.
+Follow the instructions below to plan and execute trajectories in simulation or on the real robot.
 
 ## Common Steps 
 
 ### 1. Clone this Repo
 
 ```bash
-git clone https://github.com/robgineer/cobot.git cobot
-cd ~/cobot
+git clone https://github.com/td-code/asd-turtlebot4-base.git .
+cd asd-turtlebot4-base
 ```
 
 ### 2. Install docker

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>asd-turtlebot4-getting-started</name>
+  <name>asd_getting_started</name>
   <version>0.0.0</version>
-  <description>Tool for robot hand-eye-calibration</description>
+  <description>Getting started with the Turtlebot 4</description>
   <maintainer email="thao.dang@hs-esslingen.de">tdang</maintainer>
   <license>BSD-3-Clause</license>
 

@@ -20,3 +20,6 @@ export PYTHONPATH=/opt/ros_venv/lib/python3.12/site-packages
 if [ -f /workspace/install/setup.bash ]; then
     source /workspace/install/setup.bash
 fi
+
+# Set DISPLAY for GUI applications (if needed)
+export DISPLAY=:1

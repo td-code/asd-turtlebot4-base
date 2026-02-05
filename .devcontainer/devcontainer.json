@@ -25,7 +25,7 @@
         "--security-opt",
         "seccomp=unconfined",
         "-v",
-        "/mnt/data/cobot:/workspace/data"
+        "./data:/workspace/data"
     ],
     "postCreateCommand": "cat .devcontainer/bashrc >> ~/.bashrc"
 }

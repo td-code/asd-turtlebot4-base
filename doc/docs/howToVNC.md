@@ -1,6 +1,6 @@
 # VNC
 
-This folder allows opening the cobot docker in a vscode devcontainer and display graphics in your browser via VNC.
+This folder allows opening the ASD docker in a vscode devcontainer and display graphics in your browser via VNC.
 
 ## Preparation
 
@@ -14,13 +14,13 @@ You need the following installed:
 
 ## Install Devcontainer
 
-Clone the cobot repo:
+Clone the ASD repo:
 ```bash
-git clone https://github.com/robgineer/cobot.git .
-cd cobot
+git clone https://github.com/td-code/asd-turtlebot4-base.git .
+cd asd-turtlebot4-base
 ```
 
-and open the cloned cobot directory in Visual Studio Code (File - Open Folder - [select the cobot directory]).
+and open the cloned asd-turtlebot4-base directory in Visual Studio Code (File - Open Folder - [select the asd-turtlebot4-base directory]).
 
 Press the "F1" key and type "dev containers: rebuild and reopen container". Run this command. This will download and build the docker container (might take a few minutes).
 
@@ -62,7 +62,7 @@ Switch to the browser window ``http://127.0.0.1:6080`` and start the demo in a n
 ```bash
 ubuntu@ros2-vnc-docker:~$ cd /workspace
 ubuntu@ros2-vnc-docker:/workspace$ source install/setup.bash
-ubuntu@ros2-vnc-docker:/workspace$ ros2 launch cobot_moveit_config gz_demo_launch.py 
+ubuntu@ros2-vnc-docker:/workspace$ ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py
 ```
 
 This should look similar to this:
