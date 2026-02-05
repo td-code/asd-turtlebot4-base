@@ -62,7 +62,7 @@ RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
 
 # install turtlebot4 simulation packages
 RUN apt-get update 
-RUN apt-get install -y ros-galactic-turtlebot4-desktop
+RUN apt-get install -y ros-jazzy-turtlebot4-desktop
 RUN apt-get install -y ros-jazzy-turtlebot4-simulator ros-jazzy-irobot-create-nodes
 RUN apt-get install -y ros-dev-tools
 RUN apt-get install -y ros-jazzy-ros2-control ros-jazzy-ros2-controllers ros-jazzy-gz-ros2-control
