@@ -99,7 +99,12 @@ RUN python3 -m venv --system-site-packages /opt/ros_venv
 RUN /opt/ros_venv/bin/pip install --upgrade \
     pip setuptools wheel \
     colcon-common-extensions \
-    numpy==1.26.4 onnxruntime==1.23.2 onnx==1.20.0 onnxruntime-gpu==1.23.2 \
+    numpy==1.26.4 \ 
+    # no GPU support for onnxruntime (use this if you don't have a compatible GPU or 
+    # want to avoid setting it up):
+    onnxruntime==1.23.2 onnx==1.20.0 \ 
+    # with GPU support (make sure to uncomment the line below and comment out the line above):
+    # onnxruntime-gpu==1.23.2 onnx==1.20.0 \
     opencv-python==4.10.0.84 ultralytics==8.3.224 \
     scipy scikit-learn
 
