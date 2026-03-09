@@ -48,27 +48,7 @@ ubuntu@ros2-vnc-docker:/workspace$ xeyes
 ```
 ![](img/xeyes.png)
 
-
-## Build and run the project
-
-Finally, lets build the project:
-```bash
-ubuntu@ros2-vnc-docker:~$ cd /workspace
-ubuntu@ros2-vnc-docker:/workspace$ colcon build --merge-install --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
-ubuntu@ros2-vnc-docker:/workspace$ source install/setup.bash 
-```
-
-Switch to the browser window ``http://127.0.0.1:6080`` and start the demo in a new terminal:
-```bash
-ubuntu@ros2-vnc-docker:~$ cd /workspace
-ubuntu@ros2-vnc-docker:/workspace$ source install/setup.bash
-ubuntu@ros2-vnc-docker:/workspace$ ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py
-```
-
-This should look similar to this:
-![](img/vnc_example.png)
-
-Done!
+Once xeyes is working, **go ahead and test your setup in [simulation](simulation.md)**.
 
 ## Running on a remote server
 

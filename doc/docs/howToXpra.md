@@ -60,6 +60,7 @@ All graphical user interfaces started from the terminal of the docker container 
 
 You can run multiple xpra sessions from the same container but different terminals. Simply change the DISPLAY number for different sessions.
 
+Once xpra is working, the next step is **to go ahead and test in [simulation](simulation.md)**.
 
 
 
