@@ -1,6 +1,6 @@
 {
     "name": "Ubuntu 24.04 with VNC",
-    "dockerFile": "Dockerfile",
+    "image": "tdcode/asd-turtlebot4-docker:latest",
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
     "workspaceFolder": "/workspace",
     "customizations": {
@@ -20,6 +20,8 @@
         "--hostname=ros2-vnc-docker",
         "--shm-size=512m",
         "--init",
+        "--network", 
+        "host",
         "-v",
         "./docker/bash:/home/ubuntu/bash",
         "--security-opt",

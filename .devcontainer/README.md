@@ -10,7 +10,7 @@ There are three relevant modes of operation:
 
    Leave everything as is in ``devcontainer.json``, i.e. use 
    ```bash
-   "image": "tdcode/asd-turtlebot4-docker", 
+   "image": "tdcode/asd-turtlebot4-docker:latest", 
    ```
    
 2. Running the devcontainer with GPU support:
@@ -21,7 +21,7 @@ There are three relevant modes of operation:
    
    In ``devcontainer.json``, replace the line 
    ```bash
-   "image": "tdcode/asd-turtlebot4-docker", 
+   "image": "tdcode/asd-turtlebot4-docker:latest", 
    ```
    by
    ```bash
@@ -31,10 +31,4 @@ There are three relevant modes of operation:
 
 ## Rebuilding und uploading the docker images
 
-To build a multi-arch docker image (without GPU), use 
-
-```bash
-cd .devcontainer
-docker buildx build --platform linux/amd64,linux/arm64 -t tdcode/asd-turtlebot4-docker --push .
-```
-(Note: make sure to run this from standard MacOS, not within devcontainer/docker.)
+Go to https://github.com/td-code/asd-turtlebot4-docker, update the Dockerfile stored there, and push the new version. This will trigger a Github Action that builds new images.
