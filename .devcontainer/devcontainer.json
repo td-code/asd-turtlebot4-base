@@ -10,6 +10,9 @@
             }
         }
     },
+    "containerEnv": {
+        "DISPLAY": ":1"
+    },    
     "appPort": [
         "6080:80"
     ],
@@ -20,8 +23,6 @@
         "--hostname=ros2-vnc-docker",
         "--shm-size=512m",
         "--init",
-        "--network", 
-        "host",
         "-v",
         "./docker/bash:/home/ubuntu/bash",
         "--security-opt",

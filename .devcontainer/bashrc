@@ -39,6 +39,3 @@ set_ros_prompt() {
 
 # Sicherstellen, dass die Funktion bei jedem Prompt-Aufruf ausgeführt wird
 PROMPT_COMMAND=set_ros_prompt
-
-# Set DISPLAY for GUI applications (if needed)
-export DISPLAY=:1
