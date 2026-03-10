@@ -21,5 +21,24 @@ if [ -f /workspace/install/setup.bash ]; then
     source /workspace/install/setup.bash
 fi
 
+set_ros_prompt() {
+    # 1. Entferne ein eventuell bereits vorhandenes [ROS:...] Präfix aus PS1
+    # Wir nutzen Bash Parameter Expansion zum Suchen und Ersetzen
+    # Das Muster sucht nach dem Farbecode, "[ROS:", beliebigem Inhalt und dem Reset-Code
+    local CLEAN_PS1="${PS1//\\\[\\e\[1;31m\\\]\[ROS:*\]\\\[\\e\[0m\\\] /}"
+
+    # 2. Neues Präfix generieren, falls ID ungleich 0
+    if [ -n "$ROS_DOMAIN_ID" ] && [ "$ROS_DOMAIN_ID" != "0" ]; then
+        local ROS_PREFIX="\[\e[1;31m\][ROS:$ROS_DOMAIN_ID]\[\e[0m\] "
+        PS1="${ROS_PREFIX}${CLEAN_PS1}"
+    else
+        # Falls ID 0, verwenden wir den bereinigten Prompt
+        PS1="${CLEAN_PS1}"
+    fi
+}
+
+# Sicherstellen, dass die Funktion bei jedem Prompt-Aufruf ausgeführt wird
+PROMPT_COMMAND=set_ros_prompt
+
 # Set DISPLAY for GUI applications (if needed)
 export DISPLAY=:1
