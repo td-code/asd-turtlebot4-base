@@ -17,8 +17,11 @@ RUN locale-gen en_US en_US.UTF-8
 RUN update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 
-# create turtelobot4 docker image, cf https://github.com/kscottz/turtlebot4_docker/blob/2025/Dockerfile
-ARG OVERLAY_WS=/opt/ros/overlay_ws
+# create turtelobot4 docker image, 
+# cf https://github.com/kscottz/turtlebot4_docker/blob/2025/Dockerfile
+# The link above is for a more complex setup where we build turtlebot4 
+# and ros_gz from source, but here we will just install the pre-built 
+# packages from apt. 
 
 # Choose from fortress, garden, and harmonic.
 ARG GZ_VERSION=harmonic
@@ -46,43 +49,17 @@ RUN apt-get update \
 ARG PIP_BREAK_SYSTEM_PACKAGES=TRUE
 RUN sudo apt install python3-setuptools
 
-# Build turtlebot4 and ros_gz from source
-WORKDIR $OVERLAY_WS/src
-RUN git clone https://github.com/turtlebot/turtlebot4_simulator -b ${ROS_DISTRO}
-
-WORKDIR $OVERLAY_WS
-RUN apt-get update
-RUN . /opt/ros/jazzy/setup.sh && \
-    rosdep install -y --from-paths src --ignore-src 
-RUN rm -rf /var/lib/apt/lists/*
-
-# build overlay source
-RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
-    colcon build --symlink-install
-
 # install turtlebot4 simulation packages
 RUN apt-get update 
 RUN apt-get install -y ros-jazzy-turtlebot4-desktop
 RUN apt-get install -y ros-jazzy-turtlebot4-simulator ros-jazzy-irobot-create-nodes
-RUN apt-get install -y ros-dev-tools
+RUN apt-get install -y ros-dev-tools ros-jazzy-rqt 
 RUN apt-get install -y ros-jazzy-ros2-control ros-jazzy-ros2-controllers ros-jazzy-gz-ros2-control
+RUN apt-get install -y ros-jazzy-teleop-twist-keyboard
+RUN apt-get install -y python3-colcon-clean python3-colcon-mixin
 
-# install ROS2 control
-#RUN apt-get install -y ros-jazzy-ros2-control ros-jazzy-ros2-controllers
-# install Gazebo Hamonic ROS2 control
-#RUN apt-get install -y ros-jazzy-gz-ros2-control
-# install Turtlebot4 packages
-#RUN apt-get install -y ros-jazzy-turtlebot4-simulator ros-jazzy-irobot-create-nodes \
-#    ros-jazzy-turtlebot4-desktop ros-jazzy-teleop-twist-keyboard \
-#    ros-dev-tools
-#RUN apt-get install -y ros-jazzy-rqt
 # required for MoveIt2 Task Constructor
 #RUN apt-get install -y ros-jazzy-py-binding-tools
-# colcon utils
-#RUN apt-get install -y python3-colcon-clean python3-colcon-mixin
-# pyaudio
-#RUN apt-get update
-#RUN apt-get install -y python3-pyaudio
 # marker detection
 #RUN apt-get install -y ros-jazzy-apriltag-ros
 # ros2 message converter
