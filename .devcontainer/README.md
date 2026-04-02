@@ -6,18 +6,26 @@ General info on how to use devcontainers in this project are given in [VNC setup
 
 There are three relevant modes of operation:
 
-1. Running the devcontainer without GPU support:
+1. Running the devcontainer **without GPU** support:
 
    Leave everything as is in ``devcontainer.json``, i.e. use 
    ```bash
    "image": "tdcode/asd-turtlebot4-docker:latest", 
    ```
    
-2. Running the devcontainer with GPU support:
+2. Running the devcontainer **with GPU** support:
    
-   TBD
+   In ``devcontainer.json``, replace the line 
+   ```bash
+   "image": "tdcode/asd-turtlebot4-docker:latest", 
+   ```
+   by
+   ```bash
+   "image": "tdcode/asd-turtlebot4-docker:gpu", 
+   ```
+   and run "Rebuild and reopen in container" in vscode.
 
-3. Running a locally built docker image:
+3. Running a **locally built docker image**:
    
    In ``devcontainer.json``, replace the line 
    ```bash
