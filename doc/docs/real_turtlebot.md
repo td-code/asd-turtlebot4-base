@@ -39,6 +39,19 @@ This will also prevent the VNC display port to be forwarded from the devcontaine
    ```bash
    "image": "tdcode/asd-turtlebot4-docker:gpu", 
    ```
+   Add
+   ```bash
+       "runArgs": [
+        ...
+        "-v",
+        "./data:/workspace/data",
+        "--runtime=nvidia",                         << added
+        "--gpus",                                   << added
+        "all",                                      << added
+        "--volume",                                 << added
+        "/usr/local/cuda-12.8:/usr/local/cuda-12.8" << added
+    ],
+   ```
    and run "Rebuild and reopen in container" in vscode.
 
 ## 3. ROS_DOMAIN_ID

@@ -10,9 +10,6 @@
             }
         }
     },
-    "containerEnv": {
-        "DISPLAY": ":1"
-    },    
     "appPort": [
         "6080:80"
     ],
@@ -28,7 +25,9 @@
         "--security-opt",
         "seccomp=unconfined",
         "-v",
-        "./data:/workspace/data"
+        "/etc/turtlebot4:/etc/turtlebot4",
+        "-v",
+        "./data:/workspace/data" 
     ],
     "postCreateCommand": "cat .devcontainer/bashrc >> ~/.bashrc"
 }

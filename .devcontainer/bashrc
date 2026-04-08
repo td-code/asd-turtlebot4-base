@@ -12,6 +12,14 @@ export ROS_DISTRO=jazzy  # change to 'iron' or 'humble' if needed
 # Source ROS 2
 source /opt/ros/$ROS_DISTRO/setup.bash
 
+# Source device specific ROS settings (if available)
+# This is useful for avoiding conflicts when multiple
+# ROS 2 instances are running on the same network (which is
+# the case in the SVR lab environment).
+if [ -f /etc/turtlebot4/setup.bash ]; then
+    source /etc/turtlebot4/setup.bash
+fi
+
 # activate venv
 source /opt/ros_venv/bin/activate
 export PYTHONPATH=/opt/ros_venv/lib/python3.12/site-packages
