@@ -1,0 +1,2 @@
+# hooks/resource_path.dsv
+prepend-non-duplicate;GZ_SIM_RESOURCE_PATH;share/asd_utils/worlds
