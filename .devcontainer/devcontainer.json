@@ -10,6 +10,9 @@
             }
         }
     },
+    "containerEnv": {
+        "DISPLAY": ":1"
+    },   
     "appPort": [
         "6080:80"
     ],
