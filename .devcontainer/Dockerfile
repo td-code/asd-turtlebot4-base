@@ -83,7 +83,9 @@ RUN /opt/ros_venv/bin/pip install --upgrade \
     # with GPU support (make sure to uncomment the line below and comment out the line above):
     # onnxruntime-gpu==1.23.2 onnx==1.20.0 \
     opencv-python==4.10.0.84 ultralytics==8.3.224 \
-    scipy scikit-learn
+    scipy scikit-learn  \
+    "transformers[torch]"
+
 
 #################################################
 ## port current user to container if required ##
