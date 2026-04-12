@@ -1,6 +1,6 @@
 {
     "name": "Ubuntu 24.04 with VNC",
-    "image": "tdcode/asd-turtlebot4-docker:latest",
+    "image": "tdcode/asd-turtlebot4-docker:latest", 
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
     "workspaceFolder": "/workspace",
     "customizations": {
@@ -30,7 +30,7 @@
         "-v",
         "/etc/turtlebot4:/etc/turtlebot4",
         "-v",
-        "./data:/workspace/data" 
+        "${localEnv:HOME}${localEnv:USERPROFILE}/data:/workspace/data" 
     ],
     "postCreateCommand": "cat .devcontainer/bashrc >> ~/.bashrc"
 }
