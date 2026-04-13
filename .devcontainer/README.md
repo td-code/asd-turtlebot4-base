@@ -52,3 +52,15 @@ There are three relevant modes of operation:
 ## Rebuilding und uploading the docker images
 
 Go to https://github.com/td-code/asd-turtlebot4-docker, update the Dockerfile stored there, and push the new version. This will trigger a Github Action that builds new images.
+
+The docker image with GPU suport is not build automatically. Easiest way to get build this image is 
+```bash
+# 1. modify the .devcontainer/Dockerfile for gpu support (see comments)
+
+# 2. build docker
+cd .devcontainer
+docker build -t tdcode/asd-turtlebot4-docker:gpu .
+
+# 3. push docker
+docker push tdcode/asd-turtlebot4-docker:gpu
+```
