@@ -17,8 +17,7 @@ DOMAIN_ID=$1
 
 # Die gewünschten Befehle ausführen
 source /opt/ros/jazzy/setup.bash
-export ROS_DOMAIN_ID=11 
-#$DOMAIN_ID
+export ROS_DOMAIN_ID=$DOMAIN_ID
 export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 
 if [ -f /workspace/install/setup.bash ]; then
