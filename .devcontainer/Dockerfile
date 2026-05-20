@@ -5,7 +5,7 @@ FROM tiryoh/ros2-desktop-vnc:jazzy
 RUN apt-get update
 
 # install required utilities
-RUN apt-get install -y apt-utils software-properties-common x11-apps wget vim curl
+RUN apt-get install -y apt-utils software-properties-common x11-apps wget vim curl nano
 # install dev. packages
 RUN apt-get install -y git build-essential python-is-python3 python3-tqdm python3-ipykernel python3-venv
 # get zsh and zimfw
@@ -83,7 +83,7 @@ RUN /opt/ros_venv/bin/pip install --upgrade \
     # with GPU support (make sure to uncomment the line below and comment out the line above):
     # onnxruntime-gpu==1.23.2 onnx==1.20.0 \
     opencv-python==4.10.0.84 ultralytics==8.3.224 \
-    scipy scikit-learn  \
+    scipy scikit-learn ipywidgets \
     "transformers[torch]"
 
 
