@@ -72,4 +72,7 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
+### models ###
+yolo*-world.pt
+
 # End of https://www.toptal.com/developers/gitignore/api/ros2

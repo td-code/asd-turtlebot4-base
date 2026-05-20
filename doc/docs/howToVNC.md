@@ -50,6 +50,16 @@ ubuntu@ros2-vnc-docker:/workspace$ xeyes
 
 Once xeyes is working, **go ahead and test your setup in [simulation](simulation.md)**.
 
+## Running on a native Ubuntu host
+
+If you are running the container on a native Ubuntu host system, you don't need the in-browser display and use the native system. To do so, change the DISPLAY env variable in ``.devcontainer/devcontainer.json``:
+```bash
+    "containerEnv": {
+        "DISPLAY": "${localEnv:DISPLAY}"
+    }
+```
+This will show all windows directly on your desktop.
+
 ## Running on a remote server
 
 You can also run the container on a remote machine via ssh. In order to see the VNC desktop on your local machine, you need to set up an ssh tunnel on your local machine:
