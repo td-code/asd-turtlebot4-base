@@ -8,7 +8,9 @@ This repository is based on the fabulous [Cobot project](https://github.com/robg
 
 ## How To Get Started
 
-![Auledas, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons](doc/docs/img/TurtleBot_2.png)
+![TurtleBot 2 robot](doc/docs/img/TurtleBot_2.png)
+
+*Image source: Auledas, licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0), via Wikimedia Commons.*
 
 Have a look at the [documentation overview](doc/docs/index.md) or jump straight to the [quickstart guide](doc/docs/quickstart.md).
 
