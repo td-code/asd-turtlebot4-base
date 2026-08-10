@@ -1,0 +1,34 @@
+NOTICE
+======
+
+This file lists notable third-party attributions and license notices for this repository.
+It is intended to supplement the license texts in the repository and does not replace them.
+
+Project licensing summary
+-------------------------
+
+- The repository root content and documentation are licensed under the BSD 3-Clause License unless a subdirectory or file states otherwise.
+- The ROS packages under the src directory are licensed under Apache-2.0 as declared in their package metadata and package-level license files.
+
+Third-party content and attributions
+-----------------------------------
+
+1. TurtleBot image
+   - Source: Wikimedia Commons
+   - Author: Auledas
+   - License: CC BY-SA 4.0
+   - URL: https://creativecommons.org/licenses/by-sa/4.0
+   - The image is used in this repository with attribution to the original author and license.
+
+2. Cobot project
+   - This repository is based on the Cobot project by Robert Harbach.
+   - If material from that project was copied or adapted, the original copyright and license notices must be preserved.
+
+3. Other third-party assets
+   - Any additional images, models, datasets, or documentation included in this repository should retain their original copyright and licensing notices.
+   - When redistributing such content, preserve the applicable attribution and license terms.
+
+General note
+------------
+
+If you add new third-party code, assets, or documentation to this repository, add a corresponding entry here and keep the original license text or a link to it with the redistributed material.

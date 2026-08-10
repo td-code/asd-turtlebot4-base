@@ -16,7 +16,12 @@ Have a look at the [documentation overview](doc/docs/index.md) or jump straight 
 
 
 ## License
-SPDX-License-Identifier: BSD 3-Clause AND Apache-2.0
+
+This repository contains a mixture of content under different licenses. Please comply with the license terms of the relevant component.
+
+- The repository root content and documentation, unless otherwise stated, are licensed under the BSD 3-Clause License. See [LICENSE](LICENSE) for the full text.
+- The ROS packages under [src](src) are published under Apache-2.0, as declared in their package metadata and package-level license files.
+- Third-party assets, images, and documentation remain subject to their own licenses and attribution requirements. See [NOTICE](NOTICE) for the most relevant attributions.
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
