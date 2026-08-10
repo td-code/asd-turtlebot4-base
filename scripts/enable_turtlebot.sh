@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Copyright (c) 2025, Thao Dang, University of Applied Sciences Esslingen, Germany
+# SPDX-License-Identifier: BSD-3-Clause
+
 # Prüfen, ob ein Argument übergeben wurde
 if [ -z "$1" ]; then
     echo "Fehler: Bitte eine DOMAIN_ID angeben."

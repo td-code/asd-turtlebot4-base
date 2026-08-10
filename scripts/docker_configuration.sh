@@ -1,5 +1,8 @@
 #! /bin/bash
 
+# Copyright (c) 2025, Thao Dang, University of Applied Sciences Esslingen, Germany
+# SPDX-License-Identifier: BSD-3-Clause
+
 echo "  ▗▄▄▖ ▗▄▖ ▗▖  ▗▖▗▄▄▄▖▗▄▖ ▗▄▄▄▖▗▖  ▗▖▗▄▄▄▖▗▄▄▖     ▗▄▄▖ ▗▖ ▗▖▗▄▄▄▖▗▖   ▗▄▄▄  "
 echo " ▐▌   ▐▌ ▐▌▐▛▚▖▐▌  █ ▐▌ ▐▌  █  ▐▛▚▖▐▌▐▌   ▐▌ ▐▌    ▐▌ ▐▌▐▌ ▐▌  █  ▐▌   ▐▌  █ "
 echo " ▐▌   ▐▌ ▐▌▐▌ ▝▜▌  █ ▐▛▀▜▌  █  ▐▌ ▝▜▌▐▛▀▀▘▐▛▀▚▖    ▐▛▀▚▖▐▌ ▐▌  █  ▐▌   ▐▌  █ "

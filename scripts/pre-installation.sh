@@ -1,5 +1,8 @@
 #! /bin/bash
 
+# Copyright (c) 2025, Thao Dang, University of Applied Sciences Esslingen, Germany
+# SPDX-License-Identifier: BSD-3-Clause
+
 # This script handles the following pre-installation steps (required for usage cloud servers): 
 # user creation (https://repost.aws/knowledge-center/new-user-accounts-linux-instance)
 # ssh access
