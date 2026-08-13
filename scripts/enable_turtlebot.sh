@@ -27,4 +27,10 @@ if [ -f /workspace/install/setup.bash ]; then
     source /workspace/install/setup.bash
 fi
 
+# ROS-Topicliste prüfen. Beim ersten Aufruf startet dies den ros2 Daemon,
+# cf https://turtlebot.github.io/turtlebot4-user-manual/setup/discovery_server.html
+if ! ros2 topic list >/dev/null 2>&1; then
+    echo "Fehler: 'ros2 topic list' konnte nicht ausgeführt werden. Bitte ROS-Umgebung und DOMAIN_ID prüfen."
+fi
+
 echo "ROS Jazzy konfiguriert: DOMAIN_ID=$ROS_DOMAIN_ID, RMW=$RMW_IMPLEMENTATION"
