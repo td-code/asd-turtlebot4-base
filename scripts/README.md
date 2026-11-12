@@ -39,3 +39,26 @@ Note: for GPU and CUDA support in the docker container you would need to install
 ## ```build_doc.sh```
 
 Creates a `venv`, downloads the required python packages and creates an `mkdocs` documentation page (on http://127.0.0.1:8000/).
+
+## ```basic_test.sh```
+
+Builds the workspace, starts the TurtleBot 4 Gazebo simulation, and checks for
+`/parameter_events`, `/scan`, and `/tf` as well as a received `/scan` message.
+Run it from any directory with:
+
+```
+./scripts/basic_test.sh
+```
+
+For a server-only Gazebo instance with headless rendering (no GUI), use:
+
+```
+./scripts/basic_test.sh --headless
+```
+
+Headless rendering requires an EGL-capable rendering environment and Gazebo's
+Ogre 2 rendering engine so that the simulated laser scanner can publish data.
+
+The script reports each check, exits with a non-zero status on failure, and
+stops the simulation it started. Detailed command output is kept temporarily
+and printed only when a check fails.
