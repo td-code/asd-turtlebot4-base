@@ -1,6 +1,6 @@
 {
     "name": "Ubuntu 24.04 with VNC",
-    "image": "tdcode/asd-turtlebot4-docker:latest", 
+    "image": "tdcode/asd-turtlebot4-docker:gpu", 
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
     "workspaceFolder": "/workspace",
     "customizations": {
@@ -11,7 +11,7 @@
         }
     },
     "containerEnv": {
-        "DISPLAY": ":1"
+        "DISPLAY": "${localEnv:DISPLAY}"
     },   
     "appPort": [
         "6080:80"
@@ -23,6 +23,8 @@
         "--hostname=ros2-vnc-docker",
         "--shm-size=512m",
         "--init",
+        "--network",
+        "host",     
         "-v",
         "./docker/bash:/home/ubuntu/bash",
         "--security-opt",
@@ -30,7 +32,12 @@
         "-v",
         "/etc/turtlebot4:/etc/turtlebot4",
         "-v",
-        "${localEnv:HOME}${localEnv:USERPROFILE}/data:/workspace/data" 
+        "${localEnv:HOME}${localEnv:USERPROFILE}/data:/workspace/data",
+        "--runtime=nvidia",                         
+        "--gpus",                                   
+        "all",                                      
+        "--volume",                                 
+        "/usr/local/cuda-12.8:/usr/local/cuda-12.8"          
     ],
     "postCreateCommand": "cat .devcontainer/bashrc >> ~/.bashrc"
 }
