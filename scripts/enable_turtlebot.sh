@@ -84,7 +84,11 @@ done
 ROS_DISCOVERY_SERVER+="${ROBOT_IP}:11811;"
 export ROS_DISCOVERY_SERVER
 
-export ROS_SUPER_CLIENT=True
+# ROS_SUPER_CLIENT darf in der Shell NICHT gesetzt sein: Nav2 startet sonst nicht
+# (getestet: 0/5 Starts mit, 5/5 ohne). Nur der ros2 daemon läuft als Super Client,
+# damit 'ros2 topic list' / 'ros2 node list' den ganzen Graphen sehen.
+# Hinweis: 'ros2 topic list --no-daemon' und rqt_graph sehen dann nur einen Teil.
+unset ROS_SUPER_CLIENT
 
 # Wechsel aus Simulationsmodus zurück in den Roboterbetrieb:
 unset ROS_LOCALHOST_ONLY
@@ -96,14 +100,14 @@ if [ -f /workspace/install/setup.bash ]; then
 fi
 
 ros2 daemon stop >/dev/null 2>&1
-ros2 daemon start >/dev/null 2>&1
+ROS_SUPER_CLIENT=TRUE ros2 daemon start >/dev/null 2>&1
 
 echo "TurtleBot aktiviert:"
 echo "  Name:                          $TB_NAME"
 echo "  IP:                            $ROBOT_IP"
 echo "  ROS_DOMAIN_ID:                 $ROS_DOMAIN_ID"
 echo "  ROS_DISCOVERY_SERVER:          $ROS_DISCOVERY_SERVER"
-echo "  ROS_SUPER_CLIENT:              $ROS_SUPER_CLIENT"
+echo "  ROS_SUPER_CLIENT:              ${ROS_SUPER_CLIENT:-nicht gesetzt} (nur ros2 daemon: TRUE)"
 echo "  ROS_AUTOMATIC_DISCOVERY_RANGE: $ROS_AUTOMATIC_DISCOVERY_RANGE"
 echo "  RMW_IMPLEMENTATION:            $RMW_IMPLEMENTATION"
 
