@@ -28,6 +28,8 @@ else
     echo "WARNING: PC_STANDALONE_DOMAIN_ID not set (/etc/turtlebot4/setup.bash not mounted?)" >&2
 fi
 export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
+# Gazebo transport on loopback only (fixes Fuel asset download in simulation)
+export GZ_IP=127.0.0.1
 unset ROS_DISCOVERY_SERVER ROS_STATIC_PEERS ROS_LOCALHOST_ONLY ROS_SUPER_CLIENT
 
 # activate venv
@@ -43,8 +45,9 @@ fi
 # Mode is derived from the environment, so it always reflects the current shell.
 # ROS_PROMPT_PREFIX is intentionally not exported.
 set_ros_prompt() {
-    # 1. Remove the previously added prefix (if any)
-    local CLEAN_PS1="${PS1#"${ROS_PROMPT_PREFIX:-}"}"
+    # 1. Remember the original PS1 once; always rebuild from it (never strip),
+    #    so the prefix cannot stack up, whatever else touches PS1.
+    [ -z "${ROS_BASE_PS1+x}" ] && ROS_BASE_PS1="$PS1"
 
     # 2. Build the new prefix
     local tag color
@@ -53,9 +56,10 @@ set_ros_prompt() {
     else
         tag="LOCAL"; color='1;32'
     fi
-    ROS_PROMPT_PREFIX="\[\e[${color}m\][${tag}:${ROS_DOMAIN_ID:-?}]\[\e[0m\] "
-    PS1="${ROS_PROMPT_PREFIX}${CLEAN_PS1}"
+    PS1="\[\e[${color}m\][${tag}:${ROS_DOMAIN_ID:-?}]\[\e[0m\] ${ROS_BASE_PS1}"
 }
 
+# Forget a PS1 captured by an earlier source of this file; not exported on purpose
+unset ROS_BASE_PS1 ROS_PROMPT_PREFIX
 # Overwrites any previous PROMPT_COMMAND (intended)
 PROMPT_COMMAND=set_ros_prompt
