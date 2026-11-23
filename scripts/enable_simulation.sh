@@ -68,6 +68,8 @@ unset ROS_LOCALHOST_ONLY
 # Super Client nie in der Shell setzen (Nav2 startet sonst nicht, siehe ros_super_client_issue.md)
 unset ROS_SUPER_CLIENT
 export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
+# Gazebo transport nur auf Loopback (behebt den Fuel-Asset-Download in der Simulation)
+export GZ_IP=127.0.0.1
 
 # Daemon neu starten, damit er keine Einstellungen aus dem Roboterbetrieb behält
 ros2 daemon stop >/dev/null 2>&1

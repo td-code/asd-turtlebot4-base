@@ -94,6 +94,8 @@ unset ROS_SUPER_CLIENT
 unset ROS_LOCALHOST_ONLY
 unset ROS_STATIC_PEERS
 export ROS_AUTOMATIC_DISCOVERY_RANGE=SUBNET
+# GZ_IP gehört zum lokalen Simulationsmodus
+unset GZ_IP
 
 if [ -f /workspace/install/setup.bash ]; then
   source /workspace/install/setup.bash
