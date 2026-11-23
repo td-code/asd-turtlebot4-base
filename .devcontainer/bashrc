@@ -2,7 +2,7 @@
 
 # >>> persistent bash history >>>
 export HISTFILE=~/bash/.bash_history
-touch $HISTFILE
+touch "$HISTFILE"   # ~/bash is always mounted into the container
 
 # >>> ROS 2 Setup >>>
 # Adjust the ROS_DISTRO variable to match your installed ROS 2 distro
@@ -12,13 +12,23 @@ export ROS_DISTRO=jazzy  # change to 'iron' or 'humble' if needed
 # Source ROS 2
 source /opt/ros/$ROS_DISTRO/setup.bash
 
-# Source device specific ROS settings (if available)
-# This is useful for avoiding conflicts when multiple
-# ROS 2 instances are running on the same network (which is
-# the case in the SVR lab environment).
+# PC-specific identity (must be mounted into the container).
+# /etc/turtlebot4/setup.bash only contains: export PC_STANDALONE_DOMAIN_ID=101..106
 if [ -f /etc/turtlebot4/setup.bash ]; then
     source /etc/turtlebot4/setup.bash
 fi
+
+# Default for every new terminal: local mode (simulation), no discovery server.
+# Does NOT touch the ros2 daemon. Robot mode: source enable_turtlebot.sh <1..5>
+# ROS_SUPER_CLIENT must never be set in the shell (Nav2 fails to start).
+export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+if [ -n "$PC_STANDALONE_DOMAIN_ID" ]; then
+    export ROS_DOMAIN_ID="$PC_STANDALONE_DOMAIN_ID"
+else
+    echo "WARNING: PC_STANDALONE_DOMAIN_ID not set (/etc/turtlebot4/setup.bash not mounted?)" >&2
+fi
+export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
+unset ROS_DISCOVERY_SERVER ROS_STATIC_PEERS ROS_LOCALHOST_ONLY ROS_SUPER_CLIENT
 
 # activate venv
 source /opt/ros_venv/bin/activate
@@ -29,21 +39,23 @@ if [ -f /workspace/install/setup.bash ]; then
     source /workspace/install/setup.bash
 fi
 
+# Prompt prefix: [BOT:<id>] (red, discovery server active) or [LOCAL:<id>] (green)
+# Mode is derived from the environment, so it always reflects the current shell.
+# ROS_PROMPT_PREFIX is intentionally not exported.
 set_ros_prompt() {
-    # 1. Entferne ein eventuell bereits vorhandenes [ROS:...] Präfix aus PS1
-    # Wir nutzen Bash Parameter Expansion zum Suchen und Ersetzen
-    # Das Muster sucht nach dem Farbecode, "[ROS:", beliebigem Inhalt und dem Reset-Code
-    local CLEAN_PS1="${PS1//\\\[\\e\[1;31m\\\]\[ROS:*\]\\\[\\e\[0m\\\] /}"
+    # 1. Remove the previously added prefix (if any)
+    local CLEAN_PS1="${PS1#"${ROS_PROMPT_PREFIX:-}"}"
 
-    # 2. Neues Präfix generieren, falls ID ungleich 0
-    if [ -n "$ROS_DOMAIN_ID" ] && [ "$ROS_DOMAIN_ID" != "0" ]; then
-        local ROS_PREFIX="\[\e[1;31m\][ROS:$ROS_DOMAIN_ID]\[\e[0m\] "
-        PS1="${ROS_PREFIX}${CLEAN_PS1}"
+    # 2. Build the new prefix
+    local tag color
+    if [ -n "$ROS_DISCOVERY_SERVER" ]; then
+        tag="BOT";   color='1;31'
     else
-        # Falls ID 0, verwenden wir den bereinigten Prompt
-        PS1="${CLEAN_PS1}"
+        tag="LOCAL"; color='1;32'
     fi
+    ROS_PROMPT_PREFIX="\[\e[${color}m\][${tag}:${ROS_DOMAIN_ID:-?}]\[\e[0m\] "
+    PS1="${ROS_PROMPT_PREFIX}${CLEAN_PS1}"
 }
 
-# Sicherstellen, dass die Funktion bei jedem Prompt-Aufruf ausgeführt wird
+# Overwrites any previous PROMPT_COMMAND (intended)
 PROMPT_COMMAND=set_ros_prompt
